@@ -1,0 +1,7 @@
+"aurora"
+{
+    "base"		 "sandbox"
+    "title"		 "The Aurora Framework"
+    "author"	 "Fedox"
+    "menusystem" "1"
+}
