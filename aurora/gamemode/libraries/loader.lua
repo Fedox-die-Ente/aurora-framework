@@ -5,10 +5,7 @@ aurora.util = aurora.util or {}
 -- @realm shared
 -- @string filePath The file path to include
 function aurora.util.includeFile(filePath)
-    if filePath:find("sh_") or filePath:find("/shared/") then
-        if SERVER then AddCSLuaFile(filePath) end
-        return include(filePath)
-    elseif filePath:find("sv_") or filePath:find("/server/") then
+    if filePath:find("sv_") or filePath:find("/server/") then
         if SERVER then return include(filePath) end
     elseif filePath:find("cl_") or filePath:find("/client/") then
         if SERVER then
@@ -16,6 +13,9 @@ function aurora.util.includeFile(filePath)
         else
             return include(filePath)
         end
+    else
+        if SERVER then AddCSLuaFile(filePath) end
+        return include(filePath)
     end
 end
 
