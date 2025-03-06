@@ -1,5 +1,8 @@
 aurora = aurora or {}
 
+-- Includes a lua file based off the prefix or parent directory.
+-- @realm shared
+-- @string filePath The file path to include
 function aurora.includeFile(filePath)
     if filePath:find("sh_") or filePath:find("/shared/") then
         if SERVER then AddCSLuaFile(filePath) end
@@ -12,6 +15,17 @@ function aurora.includeFile(filePath)
         else
             return include(filePath)
         end
+    end
+end
+
+-- Includes all files in a directory
+-- @realm shared
+-- @string directory The directory to include files from
+function aurora.includeDir(directory)
+    local baseDir = "aurora/gamemode/"
+
+    for _, v in ipairs(file.Find(baseDir .. directory .. "/*", "LUA")) do
+        aurora.includeFile(baseDir .. directory .. "/" .. v)
     end
 end
 
