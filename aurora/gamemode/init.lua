@@ -17,7 +17,6 @@ DEFINE_BASECLASS("gamemode_sandbox")
 -- @return boolean True if banner was displayed successfully, false otherwise
 function aurora.printBanner(color)
     local bannerFilePath = "gamemodes/aurora/banner.txt"
-    local displayColor = color or color_white
 
     if not file.Exists(bannerFilePath, "GAME") then
         ErrorNoHaltWithStack(string.format("Could not find banner file at %s", bannerFilePath))
@@ -33,7 +32,7 @@ function aurora.printBanner(color)
     bannerContent = bannerContent:gsub("{version}", GM.Version or "Unknown")
                                 :gsub("{author}", GM.Author or "Unknown")
 
-    MsgC(displayColor, bannerContent)
+    aurora.log.Info(bannerContent)
     return true
 end
 
