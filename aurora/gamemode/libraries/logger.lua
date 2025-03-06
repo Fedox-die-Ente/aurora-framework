@@ -1,6 +1,10 @@
 aurora = aurora or {}
 aurora.log = {}
 
+local function getTimestamp()
+    return os.date("[%Y-%m-%d %H:%M:%S]")
+end
+
 local function localLog(color, ...)
     local args = {}
 
@@ -12,7 +16,7 @@ local function localLog(color, ...)
         args[2] = "[SERVER] "
     end
 
-    MsgC(Color(0, 255, 255), "[Aurora] ", args[1], args[2], color, ...)
+    MsgC(Color(0, 255, 255), "[Aurora] ", args[1], args[2], color, getTimestamp(), " ", ...)
 end
 
 function aurora.log.Debug(...)
@@ -29,4 +33,18 @@ end
 
 function aurora.log.Error(...)
     localLog(Color(255, 0, 0), "[ERROR] ", ..., "\n")
+
+    local logMessage = getTimestamp() .. " [ERROR] " .. table.concat({...}, " ") .. "\n"
+
+    local directory = "aurora"
+    if not file.Exists(directory, "DATA") then
+        file.CreateDir(directory)
+    end
+
+    local filePath = directory .. "/error_logs.txt"
+    if not file.Exists(filePath, "DATA") then
+        file.Write(filePath, "")
+    end
+
+    file.Append(filePath, logMessage)
 end
