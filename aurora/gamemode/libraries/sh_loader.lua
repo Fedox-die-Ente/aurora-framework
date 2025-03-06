@@ -18,32 +18,30 @@ function aurora.includeFile(filePath)
     end
 end
 
--- Includes all files in a directory
+-- Includes all files in a directory, including subdirectories
 -- @realm shared
 -- @string directory The directory to include files from
 function aurora.includeDir(directory)
     local baseDir = "aurora/gamemode/"
 
-    for _, v in ipairs(file.Find(baseDir .. directory .. "/*", "LUA")) do
-        aurora.includeFile(baseDir .. directory .. "/" .. v)
+    local files, folders = file.Find(baseDir .. directory .. "/*", "LUA")
+
+    for _, v in ipairs(files) do
+        local fullPath = directory .. "/" .. v
+        aurora.includeFile(baseDir .. fullPath)
     end
+
+    for _, v in ipairs(folders) do
+        local fullPath = directory .. "/" .. v
+        aurora.includeDir(fullPath)
+    end
+
 end
 
 local function loadCore()
-    local coreFolder = "aurora/gamemode/core/"
-    local realms = { "server", "client", "shared" }
-
-    for _, realm in ipairs(realms) do
-        local realmDir = coreFolder .. realm .. "/"
-        local files, _ = file.Find(realmDir .. "*", "LUA")
-
-        if files then
-            for _, fileName in SortedPairs(files) do
-                local filePath = realmDir .. fileName
-                aurora.includeFile(filePath)
-            end
-        end
-    end
+    aurora.includeDir("core/server")
+    aurora.includeDir("core/client")
+    aurora.includeDir("core/shared")
 end
 
 loadCore()
