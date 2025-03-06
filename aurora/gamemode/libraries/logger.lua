@@ -16,7 +16,7 @@ local function localLog(color, ...)
         args[2] = "[SERVER] "
     end
 
-    MsgC(Color(0, 255, 255), "[Aurora] ", args[1], args[2], color, getTimestamp(), " ", ...)
+    MsgC(Color(0, 255, 255), "", args[1], args[2], color, getTimestamp(), " ", ...)
 end
 
 function aurora.log.Debug(...)
