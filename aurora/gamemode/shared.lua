@@ -3,4 +3,4 @@
 -- @realm shared
 aurora = aurora or {}
 
-aurora.includeDir("libraries")
+aurora.util.includeDir("libraries")
