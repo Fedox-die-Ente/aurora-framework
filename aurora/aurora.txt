@@ -1,7 +1,7 @@
-"aurora"
+"aurora_framework"
 {
     "base"		 "sandbox"
     "title"		 "The Aurora Framework"
-    "author"	 "Fedox"
+    "author"	 "AuroraStudios"
     "menusystem" "1"
 }
