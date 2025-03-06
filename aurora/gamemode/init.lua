@@ -18,7 +18,7 @@ DEFINE_BASECLASS("gamemode_sandbox")
 function aurora.printBanner(color)
     local bannerFilePath = "gamemodes/aurora/banner.txt"
     local displayColor = color or color_white
-
+    
     if not file.Exists(bannerFilePath, "GAME") then
         ErrorNoHaltWithStack(string.format("Could not find banner file at %s", bannerFilePath))
         return false
