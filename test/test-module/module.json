@@ -1,0 +1,23 @@
+{
+    "identifier": "test/test-module",
+    "name": "Test Module",
+    "version": "1.0.0",
+    "description": "@description.md",
+    "author": ["Fedox", "John Doe"],
+    "license": "MIT",
+    "workshopDownloads": [3214121, 1242141],
+    "requirements": {
+        "minFrameworkVersion": "1.0",
+        "dependencies": [
+            "test/test-module"
+        ]
+    },
+    "mockups": {
+        "banner": "banner.png",
+        "slider": [
+            "image1.png",
+            "image2.png",
+            "image3.png"
+        ]
+    }
+}
