@@ -41,7 +41,6 @@ local function loadCore()
             for _, fileName in SortedPairs(files) do
                 local filePath = realmDir .. fileName
                 aurora.includeFile(filePath)
-                print(string.format("Loaded %s", filePath))
             end
         end
     end
