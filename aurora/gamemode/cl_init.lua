@@ -1,6 +1,6 @@
 GM.Name = "The Aurora Framework"
-GM.Author = "Fedox"
-GM.Version = "1.0"
+GM.Author = "Aurora Studios"
+GM.Version = "1.0.0"
 
 include("libraries/sh_loader.lua")
 include("shared.lua")
