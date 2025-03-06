@@ -32,7 +32,7 @@ function aurora.printBanner(color)
     bannerContent = bannerContent:gsub("{version}", GM.Version or "Unknown")
                                 :gsub("{author}", GM.Author or "Unknown")
 
-    aurora.log.Info(bannerContent)
+    MsgC(color, bannerContent)
     return true
 end
 
