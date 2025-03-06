@@ -2,10 +2,10 @@ GM.Name = "The Aurora Framework"
 GM.Author = "Aurora Studios"
 GM.Version = "1.0.0"
 
-AddCSLuaFile("libraries/sh_loader.lua")
+AddCSLuaFile("libraries/loader.lua")
 AddCSLuaFile("shared.lua")
 
-include("libraries/sh_loader.lua")
+include("libraries/loader.lua")
 include("shared.lua")
 
 DeriveGamemode("sandbox")
