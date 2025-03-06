@@ -19,19 +19,19 @@ local function localLog(color, ...)
     MsgC(Color(0, 255, 255), "", args[1], args[2], color, " ", ...)
 end
 
-function aurora.log.Debug(...)
+function aurora.log.debug(...)
     localLog(Color(184, 158, 42), "[DEBUG] ", ..., "\n")
 end
 
-function aurora.log.Info(...)
+function aurora.log.info(...)
     localLog(Color(0, 255, 255), "[INFO] ", Color(255,255,255), ..., "\n")
 end
 
-function aurora.log.Warn(...)
+function aurora.log.warn(...)
     localLog(Color(255, 255, 0), "[WARN] ", ..., "\n")
 end
 
-function aurora.log.Error(...)
+function aurora.log.error(...)
     localLog(Color(255, 0, 0), "[ERROR] ", ..., "\n")
 
     local logMessage = getTimestamp() .. " [ERROR] " .. table.concat({...}, " ") .. "\n"
