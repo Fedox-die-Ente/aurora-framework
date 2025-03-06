@@ -1,4 +1,4 @@
-GM.Name = "Aurora"
+GM.Name = "The Aurora Framework"
 GM.Author = "Fedox"
 GM.Version = "1.0"
 
