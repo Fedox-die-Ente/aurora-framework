@@ -11,7 +11,7 @@ include("shared.lua")
 DeriveGamemode("sandbox")
 DEFINE_BASECLASS("gamemode_sandbox")
 
---- Displays the gamemode banner in the console with version and author information
+--- Displays the gamemode banner in the console with version and author information.
 -- @realm shared
 -- @param[opt] color table The color to display the banner in (defaults to color_white)
 -- @return boolean True if banner was displayed successfully, false otherwise

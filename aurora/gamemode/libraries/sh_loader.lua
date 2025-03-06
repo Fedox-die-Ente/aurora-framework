@@ -18,7 +18,7 @@ function aurora.includeFile(filePath)
     end
 end
 
--- Includes all files in a directory, including subdirectories
+-- Includes all files in a directory, including subdirectories.
 -- @realm shared
 -- @string directory The directory to include files from
 function aurora.includeDir(directory)
