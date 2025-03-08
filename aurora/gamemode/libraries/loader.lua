@@ -46,3 +46,11 @@ local function loadCore()
 end
 
 loadCore()
+
+
+local tomlFile = file.Read("gamemodes/aurora/config.toml", "GAME")
+local tomlContent = aurora.toml.parse(tomlFile)
+
+aurora.toml.init()
+
+PrintTable(aurora.toml) 
