@@ -359,4 +359,5 @@ end
 --- @param source any @Identifier for your own admin mod. Can be anything.
 function CAMI.SignalSteamIDUserGroupChanged(steamId, old, new, source)
     hook.Call("CAMI.SteamIDUsergroupChanged", nil, steamId, old, new, source)
-end
+end 
+print("cami load")
