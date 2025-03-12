@@ -360,4 +360,3 @@ end
 function CAMI.SignalSteamIDUserGroupChanged(steamId, old, new, source)
     hook.Call("CAMI.SteamIDUsergroupChanged", nil, steamId, old, new, source)
 end 
-print("cami load")
