@@ -1,0 +1,6 @@
+host = "localhost"
+port = 3306
+database = "aurora"
+user = "root"
+password = "secret"
+ssl = false
