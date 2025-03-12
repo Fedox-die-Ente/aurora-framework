@@ -39,18 +39,17 @@ function aurora.util.includeDir(directory)
 
 end
 
-local function loadCore()
+function aurora.util.refresh()
+    -- Clear existing module cache (Idk if this exists, but i saw it in a addon a few days ago.)
+    package.loaded["aurora"] = nil
+    
+    -- Reload core files in correct order
+    aurora.util.includeDir("core/shared")
     aurora.util.includeDir("core/server")
     aurora.util.includeDir("core/client")
-    aurora.util.includeDir("core/shared")
+
+    -- Reload all libraries
+    aurora.util.includeDir("libraries")
+
+    aurora.log.info("Gamemode files refreshed successfully")
 end
-
-loadCore()
-
-
-local tomlFile = file.Read("gamemodes/aurora/config.toml", "GAME")
-local tomlContent = aurora.toml.parse(tomlFile)
-
-aurora.toml.init()
-
-PrintTable(aurora.toml) 
