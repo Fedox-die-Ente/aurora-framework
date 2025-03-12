@@ -2,6 +2,6 @@
 {
     "base"		 "sandbox"
     "title"		 "The Aurora Framework"
-    "author"	 "AuroraStudios"
+    "author"	 "Our Team + Contributors <3"
     "menusystem" "1"
 }
