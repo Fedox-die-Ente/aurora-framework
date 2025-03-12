@@ -5,46 +5,48 @@ aurora.log = {}
 -- @realm shared
 -- @return string Formatted timestamp [YYYY-MM-DD HH:MM:SS]
 local function getTimestamp()
-    return os.date("[%Y-%m-%d %H:%M:%S]")
+    return os.date("%Y-%m-%d %H:%M:%S")
 end
 
 --- Internal function to handle log message formatting and display
 -- @realm shared
 -- @param color table The color for the message text
+-- @param logType string The type of log message
 -- @param ... any Additional arguments to be printed
-local function localLog(color, ...)
-    local args = {}
-
-    if CLIENT then
-        args[1] = Color(227, 216, 115)
-        args[2] = "[CLIENT] "
-    else
-        args[1] = Color(0, 150, 255)
-        args[2] = "[SERVER] "
-    end
-
-    MsgC(Color(0, 255, 255), "", args[1], args[2], color, " ", ...)
+local function localLog(color, logType, ...)
+    local timestamp = Color(255, 255, 255)
+    local bracket = Color(200, 200, 200)
+    local realm = CLIENT and Color(227, 216, 115) or Color(0, 150, 255)
+    local realmText = CLIENT and "CLIENT" or "SERVER"
+    local messageColor = Color(255, 255, 255)
+    
+    MsgC(
+        bracket, "[", timestamp, getTimestamp(), bracket, "] ",
+        bracket, "[", realm, realmText, bracket, "] ",
+        bracket, "[", color, logType, bracket, "] ",
+        messageColor, table.concat({...}, " "), "\n"
+    )
 end
 
 --- Logs a debug message to the console
 -- @realm shared
 -- @param ... any Values to log (will be concatenated with spaces)
 function aurora.log.debug(...)
-    localLog(Color(184, 158, 42), "[DEBUG] ", ..., "\n")
+    localLog(Color(184, 158, 42), "DEBUG", ...)
 end
 
 --- Logs an info message to the console
 -- @realm shared
 -- @param ... any Values to log (will be concatenated with spaces)
 function aurora.log.info(...)
-    localLog(Color(0, 255, 255), "[INFO] ", Color(255,255,255), ..., "\n")
+    localLog(Color(72, 175, 255), "INFO", ...)
 end
 
 --- Logs a warning message to the console
 -- @realm shared
 -- @param ... any Values to log (will be concatenated with spaces)
 function aurora.log.warn(...)
-    localLog(Color(255, 255, 0), "[WARN] ", ..., "\n")
+    localLog(Color(255, 175, 0), "WARN", ...)
 end
 
 --- Logs an error message to the console and saves it to a file
@@ -52,9 +54,14 @@ end
 -- @param ... any Values to log (will be concatenated with spaces)
 -- @note This function also saves the error message to aurora/error_logs.txt
 function aurora.log.error(...)
-    localLog(Color(255, 0, 0), "[ERROR] ", ..., "\n")
+    localLog(Color(255, 0, 0), "ERROR", ...)
 
-    local logMessage = getTimestamp() .. " [ERROR] " .. table.concat({...}, " ") .. "\n"
+    -- File logging with full timestamp for errors
+    local fullTimestamp = os.date("[%Y-%m-%d %H:%M:%S]")
+    local logMessage = string.format("%s [ERROR] %s\n", 
+        fullTimestamp, 
+        table.concat({...}, " ")
+    )
 
     local directory = "aurora"
     if not file.Exists(directory, "DATA") then
