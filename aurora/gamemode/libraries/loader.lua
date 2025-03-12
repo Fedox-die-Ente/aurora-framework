@@ -40,7 +40,7 @@ function aurora.util.includeDir(directory)
 end
 
 function aurora.util.refresh()
-    -- Clear existing module cache (Idk if this exists, but i saw it in a addon a few days ago.)
+    -- This will remove any temp data stored on the aurora table
     package.loaded["aurora"] = nil
     
     -- Reload core files in correct order
