@@ -35,6 +35,13 @@ function aurora.log.debug(...)
     localLog(Color(184, 158, 42), "DEBUG", ...)
 end
 
+--- Logs a success message to the console
+-- @realm shared
+-- @param... any Values to log (will be concatenated with spaces)
+function aurora.log.success(...)
+    localLog(Color(0, 255, 0), "SUCCESS", ...)
+end
+
 --- Logs an info message to the console
 -- @realm shared
 -- @param ... any Values to log (will be concatenated with spaces)

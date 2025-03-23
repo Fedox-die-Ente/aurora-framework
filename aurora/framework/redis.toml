@@ -1,0 +1,13 @@
+# Redis Configuration
+
+# Redis server host
+host = "127.0.0.1"
+
+# Redis server port
+port = "6379"
+
+# Redis password (leave empty for no password)
+password = ""
+
+# Redis database number
+database = 0
