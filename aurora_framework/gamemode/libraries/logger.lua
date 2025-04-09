@@ -16,7 +16,7 @@ end
 local function localLog(color, logType, ...)
     local timestamp = Color(255, 255, 255)
     local bracket = Color(200, 200, 200)
-    local realm = CLIENT and Color(227, 216, 115) or Color(0, 150, 255)
+    local realm = CLIENT and Color(227, 216, 115) or Color(43, 139, 207)
     local realmText = CLIENT and "CLIENT" or "SERVER"
     local messageColor = Color(255, 255, 255)
     
