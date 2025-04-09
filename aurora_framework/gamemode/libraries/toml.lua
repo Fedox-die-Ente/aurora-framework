@@ -60,7 +60,7 @@ function aurora.toml.parse(path, realm)
     return data
 end
 
-local gamemodeInfo = aurora.toml.parse("gamemodes/aurora/framework/aurora.toml", "shared")
+local gamemodeInfo = aurora.toml.parse("gamemodes/aurora_framework/framework/aurora.toml", "shared")
 if gamemodeInfo then
     aurora.gm = gamemodeInfo
 end
