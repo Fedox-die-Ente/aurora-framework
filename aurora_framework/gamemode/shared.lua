@@ -108,7 +108,7 @@ function aurora.util.refresh()
     aurora.util.includeSchemaDir("schema/server")
     aurora.util.includeSchemaDir("schema/client")
 
-    aurora.printBanner()
+    if SERVER then aurora.printBanner() end
 end
 
 function GM:Initialize()
